@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
+import AuthContext from '../AuthContext/AuthContext';
+import { signOut } from 'firebase/auth';
+import auth from '../Firebase/firebase.init';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
+    const {user} = useContext(AuthContext)
+    const handleSignOut = () =>{
+        signOut(auth)
+        .then(() => toast.success('Signout Successfull'))
+        .catch(()=> toast.error(error.message))
+    }
     return (
         <div className='bg-slate-500 px-[20px] lg:px-[70px]'>
+            <Toaster></Toaster>
             <div className="navbar ">
                 <div className="navbar-start">
                     <div className="dropdown text-white">
@@ -28,7 +39,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end ">
-                    <Link className='btn px-6' to='/login'>Login</Link>
+                    {
+                        user ? <Link onClick={handleSignOut} className='btn px-6' to='/login'>Log Out</Link>:
+                        <Link className='btn px-6' to='/login'>Login</Link>
+                    }
+                    
                 </div>
             </div>
         </div>

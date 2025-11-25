@@ -1,7 +1,10 @@
 import React from 'react';
 import profile from '../../assets/myself.jpg'
+import { useLocation } from 'react-router';
 
 const MyProfile = () => {
+    const location = useLocation()
+    console.log(location)
     return (
 
 

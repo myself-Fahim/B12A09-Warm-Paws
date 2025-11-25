@@ -10,31 +10,36 @@ import Service from "../Pages/Service";
 
 const router = createBrowserRouter([
     {
-        path:'/',
-        Component:Root,
-        children:[
+        path: '/',
+        Component: Root,
+        children: [
             {
-                path:'/',
-                Component:Home
+                path: '/',
+                Component: Home
             },
             {
-                path:'service',
-                element:<Service></Service>
-                
+                path: 'service',
+                element: <PrivateRoutes>
+                    <Service></Service>
+                </PrivateRoutes>
+
+
             },
             {
-                path:'profile',
-                Component:MyProfile
+                path: 'profile',
+                element:<PrivateRoutes>
+                    <MyProfile></MyProfile>
+                </PrivateRoutes>
             },
             {
-                path:'login',
-                Component:Login
+                path: 'login',
+                Component: Login
             },
             {
-                path:'register',
-                Component:Register
+                path: 'register',
+                Component: Register
             }
-           
+
         ]
     }
 ])
