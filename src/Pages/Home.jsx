@@ -3,6 +3,7 @@ import Slider from '../Components/Slider';
 import usePetData from '../Hooks/usePetData';
 import PetCard from '../Components/PetCard';
 import PetExperts from '../Components/PetExperts';
+import Loader from '../Components/Loader';
 
 const petExperts = [
     {
@@ -32,7 +33,7 @@ const Home = () => {
         <div className='mb-[70px]'>
             <Slider></Slider>
             {
-                loader ? <p>Loading......</p>
+                loader ? <Loader></Loader>
                     :
                     <section className='mt-[60px] '>
                         <h1 className='text-center font-bold text-2xl mb-[40px]'>Popular Winter Care Services</h1>
