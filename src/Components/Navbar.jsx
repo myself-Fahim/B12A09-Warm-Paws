@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import AuthContext from '../AuthContext/AuthContext';
 import { signOut } from 'firebase/auth';
@@ -6,11 +6,13 @@ import auth from '../Firebase/firebase.init';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext)
-    const handleSignOut = () =>{
+    const { user } = useContext(AuthContext)
+    const [showName, setShowName] = useState(false)
+    console.log(user)
+    const handleSignOut = () => {
         signOut(auth)
-        .then(() => toast.success('Logout Successfully'))
-        .catch((error)=> toast.error(error.message))
+            .then(() => toast.success('Logout Successfully'))
+            .catch((error) => toast.error(error.message))
     }
     return (
         <div className='bg-slate-500 px-[20px] lg:px-[70px]'>
@@ -31,19 +33,42 @@ const Navbar = () => {
                     </div>
                     <a className=" text-xl text-white font-bold">Warm-Paws</a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center mr-5 lg:mr-0 hidden lg:flex">
                     <ul className=" px-1 text-white font-bold">
                         <NavLink to='/' className='mr-5'>Home</NavLink>
                         <NavLink to='/service' className='mr-5'>Service</NavLink>
                         <NavLink to='/profile' className='mr-5' >My Profile</NavLink>
                     </ul>
                 </div>
-                <div className="navbar-end ">
+
+
+
+
+
+
+                <div className="navbar-end flex gap-5 lg:gap-10">
+
                     {
-                        user ? <Link onClick={handleSignOut} className='btn px-6' to='/login'>Log Out</Link>:
-                        <Link className='btn px-6' to='/login'>Login</Link>
+                        user && <div className=' relative  rounded-full flex items-center justify-center gap-3'>
+                            <div onMouseEnter={() => setShowName(true)} onMouseLeave={() => setShowName(false)} className='h-[45px] w-[45px]  '>
+                                <img className='h-full w-full rounded-full' src={user.photoURL} alt="" />
+                            </div>
+
+                            {showName && (
+                                <p className="absolute top-[50px] left-1/2 -translate-x-1/2 bg-black text-white text-sm rounded px-3 py-1 whitespace-nowrap shadow">
+                                    {user.displayName}
+                                </p>
+                            )}
+
+
+                        </div>
                     }
-                    
+
+                    {
+                        user ? <Link onClick={handleSignOut} className='btn px-6' to='/login'>Log Out</Link> :
+                            <Link className='btn px-6' to='/login'>Login</Link>
+                    }
+
                 </div>
             </div>
         </div>
