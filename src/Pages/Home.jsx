@@ -31,6 +31,33 @@ const Home = () => {
 
     return (
         <div className='mb-[70px]'>
+
+
+
+            <section className='mt-15 mx-5 lg:mx-20 rounded-xl  flex items-center justify-center'
+                style={{
+                    backgroundImage: `url("https://i.ibb.co.com/JRPvH6FW/360-F-298201895-5b-Pj-YW2q-PWJ52-Wg40-H80d8h-CAHs-PIfp-E.jpg")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    height: "600px" // adjust as needed
+                }}
+            >
+                <h1
+                    className='text-center font-bold text-2xl lg:text-4xl text-slate-800 animate__animated animate__fadeInDown'
+                >
+                    “Your Pet’s Health, Comfort & Happiness <br /> is Our Priority”
+                </h1>
+
+            </section>
+
+
+
+
+
+
+
+
             <Slider></Slider>
             {
                 loader ? <Loader></Loader>

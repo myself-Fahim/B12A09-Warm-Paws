@@ -20,7 +20,7 @@ const ForgotPass = () => {
     }
    
     return (
-        <div className='w-fit mx-auto mt-[150px]'>
+        <div className='w-fit mx-auto mt-[150px] mb-10'>
             <Toaster></Toaster>
             <form onSubmit={handleReset}>
                 <fieldset className="fieldset shadow-2xl py-8 border-base-300 rounded-box w-xs border p-4">
