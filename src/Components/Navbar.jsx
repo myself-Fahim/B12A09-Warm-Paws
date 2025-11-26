@@ -35,7 +35,7 @@ const Navbar = () => {
                     <ul className=" px-1 text-white font-bold">
                         <NavLink to='/' className='mr-5'>Home</NavLink>
                         <NavLink to='/service' className='mr-5'>Service</NavLink>
-                        <NavLink to='/profile' >My Profile</NavLink>
+                        <NavLink to='/profile' className='mr-5' >My Profile</NavLink>
                     </ul>
                 </div>
                 <div className="navbar-end ">
