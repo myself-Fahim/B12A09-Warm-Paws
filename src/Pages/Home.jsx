@@ -39,7 +39,7 @@ const Home = () => {
                         <h1 className='text-center font-bold text-2xl mb-[40px]'>Popular Winter Care Services</h1>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 lg:px-20'>
                             {
-                                pets.slice(0, 6).map(pet => <PetCard key={pet.id} pet={pet}></PetCard>)
+                                pets.slice(0, 6).map(pet => <PetCard key={pet.serviceId} pet={pet}></PetCard>)
                             }
                         </div>
                     </section>

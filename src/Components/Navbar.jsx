@@ -9,8 +9,8 @@ const Navbar = () => {
     const {user} = useContext(AuthContext)
     const handleSignOut = () =>{
         signOut(auth)
-        .then(() => toast.success('Signout Successfull'))
-        .catch(()=> toast.error(error.message))
+        .then(() => toast.success('Logout Successfully'))
+        .catch((error)=> toast.error(error.message))
     }
     return (
         <div className='bg-slate-500 px-[20px] lg:px-[70px]'>

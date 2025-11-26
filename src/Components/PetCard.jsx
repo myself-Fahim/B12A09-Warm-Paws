@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 const PetCard = ({ pet }) => {
-    const { image,serviceName,rating,price} = pet
+    const navigator = useNavigate()
+    const { image,serviceName,rating,price,serviceId} = pet
+    
+    const handleDetails = () =>{
+        navigator(`/details/${serviceId}`)
+    }
     return (
         <div className=' p-10 shadow-2xl rounded-[14px]'>
             <div className='h-[300px]'>
@@ -13,7 +19,7 @@ const PetCard = ({ pet }) => {
                 <h1>Rating: {rating}</h1>
             </div>
 
-            <button className='btn block mt-[20px] bg-slate-500 rounded-xl text-white m-auto'>View Details</button>
+            <button onClick={handleDetails} className='btn block mt-[20px] bg-slate-500 rounded-xl text-white m-auto'>View Details</button>
 
         </div>
     );

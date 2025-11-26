@@ -5,12 +5,14 @@ import auth from '../Firebase/firebase.init';
 import AuthContext from '../AuthContext/AuthContext';
 import Loader from '../Components/Loader';
 import toast, { Toaster } from 'react-hot-toast';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Register = () => {
 
     const navigator = useNavigate()
     const { setUser, loader } = useContext(AuthContext);
     const [error, setError] = useState('')
+    const [showPass, setShowPass] = useState(false)
 
     const handleCreateUser = (e) => {
         e.preventDefault();
@@ -40,6 +42,13 @@ const Register = () => {
             .catch(error => toast.error(error.message))
     }
 
+
+
+     const handleShowPass = () => {
+        setShowPass(!showPass)
+    }
+
+
     return (
 
         loader ? <Loader></Loader> :
@@ -61,7 +70,18 @@ const Register = () => {
                             <input type="text" name='photo' className="input " placeholder="URL" />
 
                             <label className="label font-bold">Password</label>
-                            <input type="password" name='password' className="input " placeholder="Password" />
+                             <div className='relative flex items-center'>
+                        <input type={showPass ? 'text' : 'password'} name='password' className="input  " placeholder="Password" />
+
+                        {
+                            showPass ? <EyeOff onClick={handleShowPass} className='w-[20px] h-[20px] cursor-pointer absolute top-3 right-2' />
+                                :
+                                <Eye onClick={handleShowPass} className='w-[20px] h-[20px] cursor-pointer absolute top-3 right-2'></Eye>
+                        }
+
+
+
+                    </div>
 
                             {
                                 error && <p className='text-red-800 font-bold mt-2'>{error}</p>
