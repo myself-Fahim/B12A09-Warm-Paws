@@ -20,7 +20,7 @@ const Slider = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className='flex justify-center w-full h-[600px] rounded-md items-center'>
-                        <img src="../assets/pic-2.webp" className='w-full object-cover h-full' />
+                        <img src="https://i.ibb.co.com/Fk4vRbN7/cat-warm-and-healthy-in-winter-weather.jpg" className='w-full object-cover h-full' />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
